@@ -1,4 +1,4 @@
-# Services and APIs
+# Modern Services and APIs
 
 ## Kinds of APIs
 
@@ -83,3 +83,33 @@ To manage size and complexity, many applications have long used a so-called thre
 - Data - access to data stores and other services
 - Model - data definitions shared by all layers
 - Web client - web browser or other HTTP client-side software
+
+The layers talk to one another via APIs.
+
+- The *Web layer* is one that users see, via *client* applications and APIs. We are talking about a RESTful web interface, with URLs, and JSON-encoded requests and responses. 
+
+- The *Service layer* contains the actual details of whatever the website provides. It imports Data modules to access databases and external services but should not know the details.
+
+- The *Data layer* provides the Service layer access to data, through files or client calls to other services.
+
+- The *Model box* isn't an actual layer but a source of data definitions shared by the layers. FastAPI's inclusion of Pydantic enables the definition of data structures with many useful features.
+
+Why do we need to separate layers?:
+- If you dont separate the layers, expect a hallowed web meme: Now you have two problems
+- Once the layers are mixed, later separation will be very difficult
+- You'll need to know two or more specialties to understand and write tests if code logic gets muddled.
+
+Data formats flowing through the arrows are:
+- Client <-> Web: RESTful HTTP with JSON
+- Web <-> Service: Models
+- Service <-> Data: Models
+- Data <-> Databases and services: Specific APIs
+
+
+# Data
+The web has ofthen been used as a frontend to relational databases, although many other ways of storing and accessing data have evolved, such as NoSQL or NewSQL databases.
+
+But beyond databases, machine learning (Ml) or deep learning - is fundamentally remaking the technology landscape. The development of large models requires lots of messing with data, which has traditionally been called **extract, transform, load (ETL)**.
+
+# Review
+The web uses many APIs, but especially RESTful ones. Asynchronous calls allow better concurrency, which speeds up the overall process. Web service applications are often large enough to divide into layers. Data has become a major area in its own right.
